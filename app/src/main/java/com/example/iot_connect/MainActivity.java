@@ -1,26 +1,30 @@
 package com.example.iot_connect;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Switch;
-import android.widget.ToggleButton;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Switch botaoSwitch;
-    private ToggleButton botaoToogle;
+    private Switch btnSwitch;
+    private TextView switchStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        botaoSwitch = findViewById(R.id.btnswitch);
-    //    botaoToogle = findViewById(R.id.btnToogle);
-    }
+        btnSwitch = findViewById(R.id.btnswitch);
+        switchStatus = findViewById(R.id.switchStatus);
 
-    public void btnListner(){
-        botaoSwitch.setOnCheckedChangeListener((buttonView, isChecked));
+        btnSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                switchStatus.setText("Switch is ON");
+            } else {
+                switchStatus.setText("Switch is OFF");
+            }
+        });
     }
 }
